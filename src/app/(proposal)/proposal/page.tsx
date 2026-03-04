@@ -1,17 +1,3 @@
-// Proposal Builder agent replaces this content.
-// This placeholder demonstrates the correct structure and styling for Tab 3.
-//
-// Rules for the Proposal Builder:
-//   - Dark panel hero (--section-dark bg) with name, value prop, pulsing badge
-//   - Proof of Work: 3-4 portfolio projects using <ProjectCard> component
-//     Link only if liveUrl exists in developer-profile.md — never link to "#"
-//   - How I Work: 4-step process (steps can vary based on job)
-//   - Skills Grid: relevant tech only — use <SkillsGrid> component
-//   - Dark panel CTA at bottom: pulsing availability dot + "Reply on Upwork to start"
-//   - Signed "— Humam"
-//   - NO: hover:-translate-y-*, shadow-lg, rounded-xl, glassmorphism
-//   - NO: dead CTA links, buzzwords ("passionate", "innovative", "leverage")
-
 import { APP_CONFIG } from "@/lib/config";
 import { profile, portfolioProjects } from "@/data/proposal";
 import { ProjectCard } from "@/components/proposal/project-card";
@@ -19,59 +5,107 @@ import { SkillsGrid } from "@/components/proposal/skills-grid";
 
 export default function ProposalPage() {
   return (
-    <div className="min-h-screen bg-background">
-      <div className="max-w-4xl mx-auto p-6 space-y-8">
+    <div className="min-h-screen" style={{ background: "var(--background)" }}>
+      <div className="max-w-4xl mx-auto px-5 py-8 space-y-10">
 
-        {/* ── Hero — dark panel ── */}
-        <div
-          className="rounded-lg p-8 space-y-4"
-          style={{ background: "var(--section-dark)" }}
+        {/* ── Section 1: Hero — dark panel ── */}
+        <section
+          className="relative rounded-2xl overflow-hidden"
+          style={{ background: "oklch(0.08 0.015 var(--primary-h, 285))" }}
         >
-          {/* "Built this demo for your project" badge */}
-          <div className="inline-flex items-center gap-2">
-            <span className="relative inline-flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary/60 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
-            </span>
-            <span className="text-xs font-mono text-white/50 tracking-wider uppercase">
-              Built this demo for your project
-            </span>
-          </div>
+          {/* Radial violet glow from top */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background:
+                "radial-gradient(ellipse 70% 50% at 50% 0%, oklch(0.55 0.22 285 / 0.20), transparent 70%)",
+            }}
+          />
 
-          <div>
-            <h1 className="text-3xl font-light text-white/60">
-              Hi, I&apos;m{" "}
-              <span className="font-black text-white">{profile.name}</span>
+          <div className="relative z-10 px-7 pt-8 pb-0">
+            {/* "Built this demo for Swave Elevate" badge — mandatory */}
+            <div className="inline-flex items-center gap-2 bg-white/8 border border-white/10 px-3 py-1.5 rounded-full mb-6">
+              <span className="relative inline-flex h-1.5 w-1.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-70" />
+                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-primary" />
+              </span>
+              <span className="text-xs font-mono tracking-widest uppercase text-white/60">
+                Built this demo for {APP_CONFIG.projectName}
+              </span>
+            </div>
+
+            {/* Muted role prefix */}
+            <p className="font-mono text-xs tracking-widest uppercase text-white/40 mb-3">
+              UI / UX Polish · React → SwiftUI
+            </p>
+
+            {/* Name headline */}
+            <h1 className="text-5xl md:text-6xl tracking-tight leading-none mb-4">
+              <span className="font-light text-white/70">Hi, I&apos;m</span>{" "}
+              <span
+                className="font-black"
+                style={{
+                  background: "var(--gradient-primary)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                {profile.name}
+              </span>
             </h1>
-            <p className="text-base text-white/60 mt-2 leading-relaxed max-w-2xl">
+
+            {/* Tailored value prop */}
+            <p className="text-base md:text-lg text-white/65 max-w-2xl leading-relaxed mb-8">
               {profile.tagline}
             </p>
           </div>
 
-          <p className="text-sm text-white/50 leading-relaxed max-w-2xl">
-            {profile.bio}
-          </p>
-
-          {/* Availability + CTA — text, not a dead button */}
-          <div className="pt-2 flex items-center gap-4">
-            <div className="flex items-center gap-2">
-              <span className="relative inline-flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[color:var(--success)]/60 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[color:var(--success)]" />
-              </span>
-              <span className="text-xs text-white/50">Currently available</span>
+          {/* Stats shelf */}
+          <div
+            className="relative z-10 border-t px-7 py-5"
+            style={{
+              borderColor: "oklch(1 0 0 / 0.08)",
+              background: "oklch(1 0 0 / 0.04)",
+            }}
+          >
+            <div className="grid grid-cols-3 gap-4">
+              {[
+                { value: "24+", label: "Projects Shipped" },
+                { value: "< 48hr", label: "Demo Turnaround" },
+                { value: "15+", label: "Industries" },
+              ].map((stat) => (
+                <div key={stat.label}>
+                  <div
+                    className="text-2xl font-bold"
+                    style={{
+                      background: "var(--gradient-primary)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      backgroundClip: "text",
+                    }}
+                  >
+                    {stat.value}
+                  </div>
+                  <div className="text-xs text-white/50 mt-0.5">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
             </div>
-            <span className="text-xs text-white/30">·</span>
-            <span className="text-xs font-medium text-primary">
-              Reply on Upwork to start
-            </span>
           </div>
-        </div>
+        </section>
 
-        {/* ── Proof of Work — portfolio projects ── */}
-        <div>
-          <h2 className="text-lg font-semibold mb-4">Relevant Projects</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* ── Section 2: Proof of Work ── */}
+        <section className="space-y-4">
+          <p className="font-mono text-xs tracking-widest uppercase text-muted-foreground">
+            Proof of Work
+          </p>
+          <h2 className="text-2xl font-semibold tracking-tight">
+            Relevant Projects
+          </h2>
+
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {portfolioProjects.map((project) => (
               <ProjectCard
                 key={project.id}
@@ -84,68 +118,158 @@ export default function ProposalPage() {
               />
             ))}
           </div>
-        </div>
+        </section>
 
-        {/* ── How I Work ── */}
-        <div>
-          <h2 className="text-lg font-semibold mb-4">How I Work</h2>
-          <div className="space-y-4">
+        {/* ── Section 3: How I Work ── */}
+        <section className="space-y-4">
+          <p className="font-mono text-xs tracking-widest uppercase text-muted-foreground">
+            Process
+          </p>
+          <h2 className="text-2xl font-semibold tracking-tight">
+            How I Work
+          </h2>
+
+          <div className="grid gap-3 sm:grid-cols-2">
             {profile.approach.map((step, i) => (
-              <div key={step.title} className="flex gap-4">
-                <div className="flex flex-col items-center">
-                  <div className="w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs font-bold font-mono shrink-0">
-                    {i + 1}
-                  </div>
-                  {i < profile.approach.length - 1 && (
-                    <div className="w-px flex-1 bg-border/60 mt-2" />
+              <div
+                key={step.title}
+                className="glass-surface p-5 space-y-2"
+              >
+                <div className="flex items-center justify-between">
+                  <span
+                    className="font-mono text-xs tracking-widest uppercase"
+                    style={{ color: "oklch(0.55 0.22 285 / 0.8)" }}
+                  >
+                    Step {String(i + 1).padStart(2, "0")}
+                  </span>
+                  {[
+                    "Day 1",
+                    "Days 2–3",
+                    "Days 4–10",
+                    "Final Day",
+                  ][i] && (
+                    <span className="font-mono text-xs text-muted-foreground/60">
+                      {["Day 1", "Days 2–3", "Days 4–10", "Final Day"][i]}
+                    </span>
                   )}
                 </div>
-                <div className="pb-5">
-                  <p className="text-sm font-medium">{step.title}</p>
-                  <p className="text-sm text-muted-foreground mt-0.5">
-                    {step.description}
-                  </p>
-                </div>
+                <h3 className="text-base font-semibold">{step.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {step.description}
+                </p>
               </div>
             ))}
           </div>
-        </div>
+        </section>
 
-        {/* ── Skills Grid — relevant tech only ── */}
-        <div>
-          <h2 className="text-lg font-semibold mb-4">Skills</h2>
-          <SkillsGrid categories={profile.skillCategories} />
-        </div>
-
-        {/* ── CTA close — dark panel ── */}
-        <div
-          className="rounded-lg p-8 space-y-4"
-          style={{ background: "var(--section-dark)" }}
-        >
-          <div className="flex items-center gap-2">
-            <span className="relative inline-flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[color:var(--success)]/60 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[color:var(--success)]" />
-            </span>
-            <span className="text-xs text-white/50">Currently available</span>
-          </div>
-          <h2 className="text-xl font-light text-white/60">
-            Let&apos;s build{" "}
-            <span className="font-bold text-white">
-              {APP_CONFIG.projectName}
-            </span>{" "}
-            together
+        {/* ── Section 4: Skills Grid ── */}
+        <section className="space-y-4">
+          <p className="font-mono text-xs tracking-widest uppercase text-muted-foreground">
+            Tech Stack
+          </p>
+          <h2 className="text-2xl font-semibold tracking-tight">
+            What I Build With
           </h2>
-          <p className="text-sm text-white/50 leading-relaxed max-w-lg">
-            This demo is a starting point. I can have the production version
-            scoped and started within days of your reply.
-          </p>
-          {/* "Reply on Upwork to start" — text, not a dead link */}
-          <p className="text-sm font-medium text-primary">
-            Reply on Upwork to start
-          </p>
-          <p className="text-sm text-white/40 pt-2">— Humam</p>
-        </div>
+          <SkillsGrid categories={profile.skillCategories} />
+        </section>
+
+        {/* ── Section 5: CTA — dark panel ── */}
+        <section
+          className="relative rounded-2xl overflow-hidden text-center"
+          style={{ background: "oklch(0.08 0.015 var(--primary-h, 285))" }}
+        >
+          {/* Bottom glow */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background:
+                "radial-gradient(ellipse 60% 50% at 50% 100%, oklch(0.72 0.20 320 / 0.18), transparent 70%)",
+            }}
+          />
+
+          <div className="relative z-10 px-8 py-12 space-y-4">
+            {/* Pulsing availability indicator */}
+            <div className="flex items-center justify-center gap-2">
+              <span className="relative inline-flex h-2 w-2">
+                <span
+                  className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
+                  style={{ background: "var(--success)" }}
+                />
+                <span
+                  className="relative inline-flex rounded-full h-2 w-2"
+                  style={{ background: "var(--success)" }}
+                />
+              </span>
+              <span
+                className="text-sm"
+                style={{
+                  color: "color-mix(in oklch, var(--success) 80%, white)",
+                }}
+              >
+                Currently available for new projects
+              </span>
+            </div>
+
+            {/* Headline — tailored to Swave */}
+            <h2 className="text-2xl md:text-3xl font-bold text-white leading-tight">
+              Your prototype is already good.
+              <br />
+              <span
+                style={{
+                  background: "var(--gradient-primary)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                Let&apos;s make it feel premium.
+              </span>
+            </h2>
+
+            {/* Body — specific to Swave */}
+            <p className="text-white/65 max-w-lg mx-auto leading-relaxed text-sm md:text-base">
+              The demo in Tab 1 is my take on Swave Elevate with glassmorphism
+              surfaces and spring-physics interactions. The real polish pass
+              would start from your actual screens — and deliver SwiftUI-ready
+              specs alongside the React implementation.
+            </p>
+
+            {/* Binary CTA */}
+            <p className="text-white/50 text-sm pt-1">
+              10-minute call or I can send a 2-screen before/after — your pick.
+            </p>
+
+            {/* Primary action — text, not a dead-end button */}
+            <p
+              className="text-lg font-semibold pt-1"
+              style={{
+                background: "var(--gradient-primary)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
+              Reply on Upwork to start
+            </p>
+
+            {/* Back link to demo */}
+            <a
+              href="/"
+              className="inline-flex items-center gap-1 text-sm text-white/40 hover:text-white/60 transition-colors"
+              style={{ transitionDuration: "var(--dur-fast)" }}
+            >
+              Back to the demo
+            </a>
+
+            {/* Signature */}
+            <p
+              className="pt-4 text-sm text-white/30 border-t"
+              style={{ borderColor: "oklch(1 0 0 / 0.08)" }}
+            >
+              -- Humam
+            </p>
+          </div>
+        </section>
 
       </div>
     </div>

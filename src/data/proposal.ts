@@ -2,57 +2,56 @@ import type { Profile, PortfolioProject } from "@/lib/types";
 
 export const profile: Profile = {
   name: "Humam",
-  tagline: "Full-stack developer specializing in Next.js applications",
-  bio: "I build MVPs and production apps that solve real operational problems — CRM systems, fleet management platforms, AI-powered dashboards, and e-commerce tools. My approach is straightforward: understand the business need, build something that works, and ship it fast.",
+  tagline:
+    "I polish React prototypes into premium mobile interfaces — the kind that feel native the moment you touch them.",
+  bio: "I build MVPs and production apps across 15+ industries. For Swave specifically, the demo in Tab 1 is my read of what a polished Swave Elevate could feel like — glassmorphism surfaces, spring-physics interactions, and a design token system that maps directly to SwiftUI values.",
   approach: [
     {
-      title: "Understand the Problem",
-      description: "Read the full requirements, identify the core pain point",
-    },
-    {
-      title: "Build a Working Demo",
+      title: "Audit",
       description:
-        "Show, don't tell — a live demo is worth 1000 words of proposal text",
+        "Review every screen in the React prototype. Map spacing inconsistencies, mismatched typography scales, and interaction gaps before writing a single line of new code. One pass here saves ten rounds of revision later.",
     },
     {
-      title: "Use Realistic Data",
+      title: "Token System",
       description:
-        "Mock data that looks like real client data, not placeholder text",
+        "Define a design token system — colors, spacing, radius, typography, motion curves — documented with SwiftUI-compatible values. No more guessing what '16px rounded' translates to on device.",
     },
     {
-      title: "Ship Fast",
-      description: "MVP first, polish later. Get something deployed quickly",
+      title: "Polish Pass",
+      description:
+        "Apply refinements screen by screen. Glassmorphism surfaces where they earn their complexity. Gradients that add depth, not noise. Micro-interactions that make the app feel alive without demanding attention.",
+    },
+    {
+      title: "Handoff",
+      description:
+        "Annotated specs with spring curves, haptic trigger points, and material references. Everything your iOS engineer needs to implement, nothing they'd have to interpret.",
     },
   ],
   skillCategories: [
     {
+      name: "UI Design",
+      skills: ["Figma", "CSS Architecture", "Design Systems", "Typography"],
+    },
+    {
+      name: "iOS Knowledge",
+      skills: [
+        "Apple HIG",
+        "SwiftUI Conventions",
+        "iOS Patterns",
+        "Dynamic Island",
+      ],
+    },
+    {
       name: "Frontend",
-      skills: [
-        "TypeScript",
-        "React",
-        "Next.js",
-        "Tailwind CSS",
-        "shadcn/ui",
-        "Recharts",
-      ],
+      skills: ["React", "TypeScript", "Tailwind CSS", "CSS Animations"],
     },
     {
-      name: "Backend & APIs",
+      name: "Motion",
       skills: [
-        "Node.js",
-        "REST APIs",
-        "Microsoft Graph",
-        "Stripe",
-        "Shopify API",
-      ],
-    },
-    {
-      name: "AI & Automation",
-      skills: [
-        "Claude API",
-        "OpenAI API",
-        "n8n",
-        "Prompt Engineering",
+        "Spring Physics",
+        "Haptic Design",
+        "Gesture Systems",
+        "Lottie",
       ],
     },
   ],
@@ -60,24 +59,37 @@ export const profile: Profile = {
 
 export const portfolioProjects: PortfolioProject[] = [
   {
-    id: "wmf-agent",
-    title: "WMF Agent Dashboard",
+    id: "outerbloom",
+    title: "Outerbloom — AI Social Coordination",
     description:
-      "AI-powered customer service agent for manufacturing — email classification, RFQ extraction, human-in-the-loop approval",
-    tech: ["Next.js", "Claude API", "n8n", "Microsoft Graph"],
+      "Consumer app with real-time matching, social coordination, and event planning. The UI required the same layered depth and luminous palette Swave uses — dark canvas, gradient accents, tactile interactions.",
+    tech: ["Next.js", "TypeScript", "Tailwind", "AI pipeline"],
+    outcome:
+      "AI-driven matching pipeline connecting users, schedules, and venues — reducing manual coordination overhead",
+    relevance:
+      "Closest aesthetic match to Swave: dark UI, gradient-lit elements, consumer-facing social experience.",
+    liveUrl: "https://outerbloom.vercel.app",
   },
   {
-    id: "lead-crm",
-    title: "Lead Intake CRM",
+    id: "meditation-audio",
+    title: "Meditation Audio App",
     description:
-      "Lead intake form, CRM dashboard, lead scoring, pipeline management, and automation rules",
+      "Personalized meditation and affirmation app with script generation, TTS playback, ambient sound mixer, and session library. Built the full playback UI from scratch — player controls, waveform display, session cards.",
     tech: ["Next.js", "TypeScript", "Tailwind", "shadcn/ui"],
+    outcome:
+      "End-to-end audio pipeline — from AI-generated script to mixed ambient playback with a saved session library",
+    relevance:
+      "Demonstrates consumer mobile app UI craft: bottom nav, card stacks, smooth transitions between states.",
   },
   {
-    id: "fleet-saas",
-    title: "Fleet Maintenance SaaS",
+    id: "sports-vision",
+    title: "Sports Vision MVP",
     description:
-      "Asset tracking, work orders, preventive maintenance, inspections, parts inventory, analytics",
-    tech: ["Next.js", "Recharts", "TypeScript", "shadcn/ui"],
+      "AR-style sports object detection demo simulating iOS LiDAR scanning. Designed the scan UI — detection overlays, confidence rings, real-time accuracy bars — in a browser-first format that mirrors how iOS apps present spatial data.",
+    tech: ["Next.js", "TypeScript", "Tailwind", "shadcn/ui", "Recharts"],
+    outcome:
+      "AR-style scan UI with detection overlays, confidence scores, and accuracy visualization — delivered as a browser-based MVP",
+    relevance:
+      "Shows comfort designing for iOS interaction patterns: scan states, depth overlays, real-time feedback.",
   },
 ];
