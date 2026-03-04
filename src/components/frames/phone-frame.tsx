@@ -133,8 +133,6 @@ export function PhoneFrame({
         "w-[300px] h-[620px]",
         // Rounded corners — iPhone is more rounded
         isIphone ? "rounded-[3rem]" : "rounded-[2rem]",
-        // Responsive scaling
-        "frame-responsive",
         className
       )}
     >
