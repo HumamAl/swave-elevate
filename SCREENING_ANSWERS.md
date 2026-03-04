@@ -2,7 +2,7 @@
 
 ## Implicit Question 1: "Share 2-3 mobile apps you've personally designed"
 
-Built a browser-based iOS AR prototype (Sports Vision MVP) with scan overlays, depth effects, and confidence badges — plus a meditation audio app with ambient layering and personalized session UI. Both prioritize the kind of refinement Swave is describing: spacing, visual hierarchy, glass-style elements. Demo built directly for your project: {VERCEL_URL}
+Built a browser-based iOS AR prototype (Sports Vision MVP) with scan overlays, depth effects, and confidence badges — plus a meditation audio app with ambient layering and personalized session UI. Both prioritize the kind of refinement Swave is describing: spacing, visual hierarchy, glass-style elements. Demo built directly for your project: https://swave-elevate.vercel.app
 
 ## Implicit Question 2: "Your preferred workflow — Figma or in-code refinement?"
 

@@ -1,6 +1,6 @@
 Hi Swave team,
 
-Your prototype has the bones — what it's missing is the cohesion and premium product-level detailing that makes it feel top-tier. Refined it in-code to show what that looks like: {VERCEL_URL}
+Your prototype has the bones — what it's missing is the cohesion and premium product-level detailing that makes it feel top-tier. Refined it in-code to show what that looks like: https://swave-elevate.vercel.app
 
 The demo adds glass-style surfaces, gradient depth, tightened spacing rhythm, and micro-interactions that stay Apple HIG-compliant — refinement, not redesign.
 
